@@ -13,18 +13,18 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 import com.wangmin.utils.DialogUtils.DialogType;
-
+//è¿™æ˜¯æˆ‘æ³¨é‡Šçš„åœ°æ–¹.....
 public class FtpUtls {
-	 private FTPClient ftp =new FTPClient(); 
-	    /**  
-	     * @param path ÉÏ´«µ½ftp·þÎñÆ÷ÄÄ¸öÂ·¾¶ÏÂ     
-	     * @param addr µØÖ·  
-	     * @param port ¶Ë¿ÚºÅ  
-	     * @param username ÓÃ»§Ãû  
-	     * @param password ÃÜÂë  
-	     * @return  
-	     * @throws Exception  
-	     */    
+	 private FTPClient ftp =new FTPClient();
+	    /**
+	     * @param path ï¿½Ï´ï¿½ï¿½ï¿½ftpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Â·ï¿½ï¿½ï¿½ï¿½
+	     * @param addr ï¿½ï¿½Ö·
+	     * @param port ï¿½Ë¿Úºï¿½
+	     * @param username ï¿½Ã»ï¿½ï¿½ï¿½
+	     * @param password ï¿½ï¿½ï¿½ï¿½
+	     * @return
+	     * @throws Exception
+	     */
 	 private String localpath;
 	 private String remotePath;
 	 public FtpUtls(){
@@ -44,58 +44,58 @@ public class FtpUtls {
 		 }
 		 this.remotePath = remotePath;
 	 }
-	    public boolean connect(String addr,int port,String username,String password) throws Exception {      
-	        boolean result = false;      
-	        ftp = new FTPClient();      
-	        int reply;      
-	        ftp.connect(addr,port); 
+	    public boolean connect(String addr,int port,String username,String password) throws Exception {
+	        boolean result = false;
+	        ftp = new FTPClient();
+	        int reply;
+	        ftp.connect(addr,port);
 	        if(username == null){
 	        	username = "anonymous";
 	        	password = "614645062@qq.com";
 	        }
-	        ftp.login(username,password);      
-	       // ftp.setFileType(FTPClient.BINARY_FILE_TYPE);      
-	        reply = ftp.getReplyCode();      
-	        if (!FTPReply.isPositiveCompletion(reply)) {      
-	            ftp.disconnect();      
-	            return result;      
-	        }         
-	        result = true;      
-	        return result;      
-	    }      
-	    /**  
-	     * @param file ÉÏ´«µÄÎÄ¼þ»òÎÄ¼þ¼Ð  
-	     * @throws Exception  
-	     */    
-	    public  void upload(File file,String ServerPath) throws Exception{  
-	        if(file.isDirectory()){ 
-	        	String dir = ServerPath + "/" +file.getName();
-	            ftp.makeDirectory(dir);                
-	            ftp.changeWorkingDirectory(file.getName());      
-	            String[] files = file.list();             
-	            for (int i = 0; i < files.length; i++) {      
-	                File file1 = new File(file.getPath()+"\\"+files[i] );      
-	                if(file1.isDirectory()){      
-	                    upload(file1,dir);      
-	                    ftp.changeToParentDirectory();      
-	                }else{                    
-	                    File file2 = new File(file.getPath()+"\\"+files[i]);      
-	                    FileInputStream input = new FileInputStream(file2);
-	                    ftp.storeFile(file2.getName(), input);      
-	                    input.close();                            
-	                }                 
-	            }      
-	        }else{  
-	            ftp.makeDirectory(ServerPath);
-	            ftp.changeWorkingDirectory(ServerPath);
-	            File file2 = new File(file.getPath());      
-	            FileInputStream input = new FileInputStream(file2); 
-	            ftp.storeFile(file2.getName(), input);      
-	            input.close();        
-	        }      
+	        ftp.login(username,password);
+	       // ftp.setFileType(FTPClient.BINARY_FILE_TYPE);
+	        reply = ftp.getReplyCode();
+	        if (!FTPReply.isPositiveCompletion(reply)) {
+	            ftp.disconnect();
+	            return result;
+	        }
+	        result = true;
+	        return result;
 	    }
 	    /**
-	     * ÏÂÔØÎÄ±¾ÎÄµµ»òÕß¶þ½øÖÆÎÄµµ
+	     * @param file ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+	     * @throws Exception
+	     */
+	    public  void upload(File file,String ServerPath) throws Exception{
+	        if(file.isDirectory()){
+	        	String dir = ServerPath + "/" +file.getName();
+	            ftp.makeDirectory(dir);
+	            ftp.changeWorkingDirectory(file.getName());
+	            String[] files = file.list();
+	            for (int i = 0; i < files.length; i++) {
+	                File file1 = new File(file.getPath()+"\\"+files[i] );
+	                if(file1.isDirectory()){
+	                    upload(file1,dir);
+	                    ftp.changeToParentDirectory();
+	                }else{
+	                    File file2 = new File(file.getPath()+"\\"+files[i]);
+	                    FileInputStream input = new FileInputStream(file2);
+	                    ftp.storeFile(file2.getName(), input);
+	                    input.close();
+	                }
+	            }
+	        }else{
+	            ftp.makeDirectory(ServerPath);
+	            ftp.changeWorkingDirectory(ServerPath);
+	            File file2 = new File(file.getPath());
+	            FileInputStream input = new FileInputStream(file2);
+	            ftp.storeFile(file2.getName(), input);
+	            input.close();
+	        }
+	    }
+	    /**
+	     * ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½
 	     * @param remoteFile
 	     * @param addr
 	     * @param port
@@ -104,30 +104,30 @@ public class FtpUtls {
 	     * @return
 	     */
 	    public String download(String remoteFile,int type){
-	         FileOutputStream fos = null; 
-	         try { 
-	             String remoteFileName = remoteFile; 
-	             fos = new FileOutputStream(localpath+File.separator+System.currentTimeMillis()+remoteFile.substring(remoteFile.indexOf("/")+1)); 
-	             ftp.setBufferSize(1024); 
-	             //ÉèÖÃÎÄ¼þÀàÐÍ£¨¶þ½øÖÆ£© 
-	             ftp.setFileType(type); 
-	             ftp.retrieveFile(remoteFileName, fos); 
+	         FileOutputStream fos = null;
+	         try {
+	             String remoteFileName = remoteFile;
+	             fos = new FileOutputStream(localpath+File.separator+System.currentTimeMillis()+remoteFile.substring(remoteFile.indexOf("/")+1));
+	             ftp.setBufferSize(1024);
+	             //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½
+	             ftp.setFileType(type);
+	             ftp.retrieveFile(remoteFileName, fos);
 	             if(type == FTPClient.ASCII_FILE_TYPE){
 		             return IOutils.getText( ftp.getInputStream(), true,"GBK");
 	             }else{
 	            	 return null;
 	             }
-	         } catch (Exception e) { 
+	         } catch (Exception e) {
 	        	 DialogUtils.showMessageDialog(null, e.getMessage(), DialogType.NORMAL);
 				 return null;
-	         } finally { 
+	         } finally {
 	             IOutils.closeResource(fos);
-	             try { 
-	                 ftp.disconnect(); 
-	             } catch (IOException e) { 
-	                 e.printStackTrace(); 
-	                 throw new RuntimeException("¹Ø±ÕFTPÁ¬½Ó·¢ÉúÒì³££¡", e); 
-	             } 
-	         } 
+	             try {
+	                 ftp.disconnect();
+	             } catch (IOException e) {
+	                 e.printStackTrace();
+	                 throw new RuntimeException("ï¿½Ø±ï¿½FTPï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½", e);
+	             }
+	         }
 	    }
 }
