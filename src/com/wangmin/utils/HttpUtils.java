@@ -33,7 +33,9 @@ public class HttpUtils {
 	}
 	
 	
-	
+	/**
+	 * 测试提交，添加注释
+	 * /
 	public static String getJson(Component component,String urls,String encode){
 		HttpURLConnection urlConnection = null;
 		try{
@@ -43,7 +45,7 @@ public class HttpUtils {
 			return IOutils.getString(bufferedReader,true);
 		}catch(Exception e){
 			e.printStackTrace();
-			DialogUtils.showMessageDialog(component, urls+"��ȡ����ʧ��    "+e.getMessage(), DialogType.NORMAL);
+			DialogUtils.showMessageDialog(component, urls+"»ñÈ¡Êý¾ÝÊ§°Ü    "+e.getMessage(), DialogType.NORMAL);
 			return null;
 		}
 	}
