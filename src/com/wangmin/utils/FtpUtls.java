@@ -13,7 +13,7 @@ import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
 
 import com.wangmin.utils.DialogUtils.DialogType;
-//这是我注释的地方.....
+//这是我注释的地方.....改动的地方
 public class FtpUtls {
 	 private FTPClient ftp =new FTPClient();
 	    /**
